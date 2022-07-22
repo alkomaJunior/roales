@@ -1,0 +1,169 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HOME | ROALES{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.01.min.css">
+    <style>
+        .autoComplete_wrapper{
+            position: absolute;
+            width: 600px;
+            top: 10%;
+        }
+
+        .autoComplete_wrapper>input {
+            padding-left: 8%;
+        }
+    </style>
+
+    <!-- Hero-->
+    <section class="container py-5 mt-5 mb-lg-3">
+        <div class="row align-items-center mt-md-2">
+            <div class="col-lg-7 order-lg-2 mb-lg-0 mb-4 pb-2 pb-lg-0"><img class="d-block mx-auto" src="{{ asset('build/img/city-guide/home/hero-img.jpg') }}" width="746" alt="Hero image"></div>
+            <div class="col-lg-5 order-lg-1 pe-lg-0">
+                <h1 class="display-5 mb-4 me-lg-n5 text-lg-start text-center mb-4">Start exploring
+                    <span class="d-inline-block">
+                        <a class="dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">!!!</a>
+                    </span>
+                </h1>
+                <p class="text-lg-start text-center mb-4 mb-lg-5 fs-lg">Find great places to stay, eat, shop, or visit from our partners and local experts.</p>
+                <!-- Search form-->
+                <div class="me-lg-n5">
+                    {{ include('app_core/forms/_homeSearchLocationForm.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Categories-->
+    <section class="container d-flex flex-wrap flex-column flex-sm-row pb-5 mb-md-3">
+        <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4" href="#" onclick="getLocation()">
+            <div class="icon-box-media bg-faded-danger text-danger rounded-circle me-2"><i class="fi-map-pins"></i></div>
+            <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Nearby</h3>
+        </a>
+        <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4" href="{{ path('app_hotel_index') }}">
+            <div class="icon-box-media bg-faded-accent text-accent rounded-circle me-2"><i class="fi-bed"></i></div>
+            <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Accommodation</h3>
+        </a>
+        <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4" href="{{ path('app_restaurant_index') }}">
+            <div class="icon-box-media bg-faded-warning text-warning rounded-circle me-2"><i class="fi-cafe"></i></div>
+            <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Foods & Drinks</h3>
+        </a>
+        <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4" href="{{ path('app_attraction_index') }}">
+            <div class="icon-box-media bg-faded-primary text-primary rounded-circle me-2"><i class="fi-entertainment"></i></div>
+            <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Attractions</h3>
+        </a>
+        <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm rounded-pill py-2 ps-2 pe-4 mb-2 mb-sm-3 me-sm-3 me-xxl-4" target="_blank" href="https://www.tripadvisor.fr/Airlines">
+            <div class="icon-box-media bg-faded-success text-success rounded-circle me-2"><i class="fi-plane"></i></div>
+            <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">Flight / Booking</h3>
+        </a>
+        <div class="dropdown mb-2 mb-sm-3">
+            <a class="icon-box card flex-row align-items-center flex-shrink-0 card-hover border-0 shadow-sm rounded-pill py-2 ps-2 pe-4" href="#" data-bs-toggle="dropdown">
+                <div class="icon-box-media bg-faded-info text-info rounded-circle me-2"><i class="fi-dots-horisontal"></i></div>
+                <h3 class="icon-box-title fs-sm ps-1 pe-2 mb-0">More</h3>
+            </a>
+            <div class="dropdown-menu dropdown-menu-sm-end my-1">
+                <a class="dropdown-item fw-bold" target="_blank" href="https://www.tripadvisor.fr/RentalCars"><i class="fi-car fs-base opacity-60 me-2"></i>Car Rental</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where to stay-->
+    <section class="container my-5 py-lg-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
+            <h2 class="h3 mb-sm-0">HOTELS</h2>
+        </div>
+        <!-- Carousel-->
+        <div class="row">
+            {% for hotel in hotels %}
+                <!-- Item-->
+                <div class="col-4">
+                    <div class="position-relative">
+                        <div class="position-relative mb-3">
+                            <img class="rounded-3" src="{{ hotel.photoOriginalUrl }}" alt="Article img">
+                        </div>
+                        <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link" href="{{ path('app_hotel_details', {'slug': hotel.slug}) }}">{{ hotel.name }}</a></h3>
+                        <ul class="list-inline mb-0 fs-xs">
+                            <li class="list-inline-item pe-1"><i class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b>{{ hotel.rating }}</b><span class="text-muted">&nbsp;({{ hotel.numReviews }})</span></li>
+                            <li class="list-inline-item pe-1"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>{{ hotel.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- What’s new-->
+    <section class="container mt-n3 mt-md-0 mb-5 pb-lg-4">
+        <h2 class="h3 mb-4 pb-2">What’s new in Berlin</h2>
+        <!-- Carousel-->
+        <div class="tns-carousel-wrapper">
+            <div>
+                <!-- Item-->
+                <div>
+                    <div class="row">
+                        <div class="col-md-7 mb-md-0 mb-3">
+                            <img class="position-relative rounded-3 zindex-5" style="height: 400px;" src="{{ asset('build/img/city-guide/home/new-1.jpg') }}" alt="Article image"></div>
+                        <div class="col-md-5">
+                            <h3 class="h4 from-top">Amusement Park</h3>
+                            <ul class="list-unstyled delay-2 from-end">
+                                <li class="mb-1 fs-sm"><i class="fi-map-pin text-muted me-2 fs-base"></i>Ollenhauer Str. 29, 10118</li>
+                                <li class="mb-1 fs-sm"><i class="fi-clock text-muted me-2 fs-base"></i>9:00 – 23:00</li>
+                            </ul>
+                            <p class="pb-2 delay-3 from-end d-none d-lg-block">
+                                After opening as the VEB Kulturpark Plänterwald for the GDR’s 20th birthday on October 4, 1969, it was hugely popular, not least because of its 40-meter Riesenrad (Ferris wheel) with 36 cabins. This was upgraded twenty years later to coincide with GDR’s 40th birthday celebrations to a 45-meter model with 40 cabins. Germans take their birthdays very seriously.
+                            </p>
+                            <div class="delay-4 scale-up"><a class="btn btn-primary rounded-pill" href="city-guide-single.html">View more<i class="fi-chevron-right fs-sm ms-2"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel custom controls-->
+        <div class="tns-carousel-controls pt-2 mt-4" id="carousel-controls">
+            <button class="me-3" type="button"><i class="fi-chevron-left fs-xs"></i></button>
+            <button type="button"><i class="fi-chevron-right fs-xs"></i></button>
+        </div>
+    </section>
+    <!-- Banner + Where to eat-->
+    <section class="container my-5 py-lg-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
+            <h2 class="h3 mb-sm-0">RESTAURANTS</h2>
+        </div>
+        <!-- Carousel-->
+        <div class="row">
+            {% for restaurant in restaurants %}
+                <!-- Item-->
+                <div class="col-4">
+                    <div class="position-relative">
+                        <div class="position-relative mb-3">
+                            <img class="rounded-3" src="{% if restaurant.photoOriginalUrl != "" %}{{ restaurant.photoOriginalUrl }}{% else %}{{ asset('build/img/city-guide/brands/06.svg') }}{% endif %}" alt="Article img">
+                        </div>
+                        <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link" href="{{ path('app_restaurant_details', {'slug': restaurant.slug}) }}">{{ restaurant.name }}</a></h3>
+                        <ul class="list-inline mb-0 fs-xs">
+                            <li class="list-inline-item pe-1"><i class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b>{{ restaurant.rating }}</b><span class="text-muted">&nbsp;({{ restaurant.numReviews }})</span></li>
+                            <li class="list-inline-item pe-1"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>{{ restaurant.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            console.log(position.coords.latitude, position.coords.longitude);
+            window.location.replace("https://127.0.0.1:8000/nearby/"+position.coords.latitude+"/"+position.coords.longitude);
+        }
+    </script>
+
+    {% block homeScript %}
+        {{ encore_entry_script_tags('home-autocomplete') }}
+    {% endblock %}
+{% endblock %}

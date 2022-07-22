@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SIGN IN | ROALES{% endblock %}
+
+{% block body %}
+    <!-- Page content-->
+    <div class="container-fluid d-flex h-100 align-items-center justify-content-center py-4 py-sm-5" style="margin-top: 3%">
+        <div class="card card-body" style="max-width: 940px"><a class="position-absolute top-0 end-0 nav-link fs-sm py-1 px-2 mt-3 me-3" href="#" onclick="window.history.go(-1); return false;"><i class="fi-arrow-long-left fs-base me-2"></i>Go back</a>
+            <div class="row mx-0 align-items-center">
+                <div class="col-md-6 border-end-md p-2 p-sm-5">
+                    <h2 class="h3 mb-4 mb-sm-5">Hey there!<br>Welcome back.</h2><img class="d-block mx-auto" src="{{ asset('build/img/signin-modal/signin.svg') }}" width="344" alt="Illustartion">
+                    <div class="mt-4 mt-sm-5">Don't have an account? <a href="{{ path('app_register') }}">Sign up here</a></div>
+                </div>
+                <div class="col-md-6 px-2 pt-2 pb-4 px-sm-5 pb-sm-5 pt-md-5">
+                    <a class="btn btn-outline-info w-100 mb-3" href="#"><i class="fi-facebook fs-lg me-1"></i>Sign in with Facebook</a>
+                    <div class="d-flex align-items-center py-3 mb-3">
+                        <hr class="w-100">
+                        <div class="px-3">Or</div>
+                        <hr class="w-100">
+                    </div>
+                    <form method="post" class="needs-validation" novalidate>
+                        {% if error %}
+                            <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        <div class="mb-4">
+                            <label class="form-label mb-2" for="inputEmail">Email address</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Enter your email" required autofocus>
+                            <div class="invalid-feedback">
+                                <span class="d-block">
+                                    <span class="form-error-message font-weight-bold">{{ 'This field is missing'|trans~" "~"And/or"|trans~" "~'This field is not a valid email'|trans }}</span>
+                                </span>
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <label class="form-label mb-0" for="inputPassword">Password</label>
+                                {# <a class="fs-sm" href="#">Forgot password?</a> #}
+                            </div>
+                            <div class="password-toggle">
+                                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Enter your password" required>
+                                <div class="invalid-feedback">
+                                    <span class="d-block">
+                                        <span class="form-error-message font-weight-bold">This field is missing</span>
+                                    </span>
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <label class="password-toggle-btn" aria-label="Show/hide password">
+                                    <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+                                </label>
+                            </div>
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >
+                        </div>
+
+                        <button class="btn btn-primary btn-lg w-100" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                let forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                let validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{{ form_start(registrationForm, {'attr': {'class': 'needs-validation'}}) }}
+    <div class="mb-4">
+        {{ form_label(registrationForm.fullName, 'Full name') }}
+        {{ form_widget(registrationForm.fullName) }}
+        <div class="invalid-feedback">
+            <span>{{ form_errors(registrationForm.fullName) }}</span>
+        </div>
+    </div>
+    <div class="mb-4">
+        {{ form_label(registrationForm.email, 'Email address') }}
+        {{ form_widget(registrationForm.email) }}
+        <div class="invalid-feedback">
+            <span>{{ form_errors(registrationForm.email) }}</span>
+        </div>
+    </div>
+    <h6><i>{{ pwdTitle|default(' ') }}</i></h6>
+    <div class="mb-4">
+        {{ form_label(registrationForm.plainPassword.first, 'Password') }}
+        <div class="password-toggle">
+            {{ form_widget(registrationForm.plainPassword.first) }}
+            <div class="invalid-feedback">
+                <span>{{ form_errors(registrationForm.plainPassword.first) }}</span>
+            </div>
+            <label class="password-toggle-btn" aria-label="Show/hide password">
+                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+            </label>
+        </div>
+    </div>
+    <div class="mb-4">
+        {{ form_label(registrationForm.plainPassword.second, 'Confirm password') }}
+        <div class="password-toggle">
+            {{ form_widget(registrationForm.plainPassword.second) }}
+            <label class="password-toggle-btn" aria-label="Show/hide password">
+                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+            </label>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-lg w-100" type="submit" formnovalidate>{{ Action | default('Sign Up') }}</button>
+{{ form_end(registrationForm) }}

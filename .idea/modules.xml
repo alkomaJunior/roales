@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/T-WEB-800-T-WEB-800_msc2023_group-2.iml" filepath="$PROJECT_DIR$/.idea/T-WEB-800-T-WEB-800_msc2023_group-2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../OCDEVELOPPEURPHPSYMFONY/Todo-and-co/.idea/Todo-and-co.iml" filepath="$PROJECT_DIR$/../../OCDEVELOPPEURPHPSYMFONY/Todo-and-co/.idea/Todo-and-co.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../OCDEVELOPPEURPHPSYMFONY/snowtricks/.idea/snowtricks.iml" filepath="$PROJECT_DIR$/../../OCDEVELOPPEURPHPSYMFONY/snowtricks/.idea/snowtricks.iml" />
+    </modules>
+  </component>
+</project>

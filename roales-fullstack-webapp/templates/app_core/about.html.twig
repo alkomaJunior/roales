@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ABOUT-US | ROALES{% endblock %}
+
+{% block body %}
+    <section class="mt-5 pt-4">
+        <!-- Parallax container-->
+        <div class="jarallax mt-2" data-jarallax data-speed="0.5">
+            <!-- Parallax image-->
+            <div class="jarallax-img bg-secondary" style="background-image: url({{ asset('build/img/city-guide/about/hero-bg.jpg') }}); background-position: 36% center !important;"></div>
+            <!-- Section content-->
+            <div class="container py-3">
+                <!-- Breadcrumb-->
+                <nav class="pt-3" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-light mb-lg-5">
+                        <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                    </ol>
+                </nav>
+                <!-- Text-->
+                <div class="col-md-6 col-sm-8 py-md-5 py-4 px-0">
+                    <h1 class="display-4 mb-4 pb-md-2 text-light">Fall in <i class='fi-heart fs-1 text-primary'></i> with new places!</h1>
+                    <p class="mb-sm-5 mb-4 pb-md-5 pb-3 lead text-light">We are your personal guide to unique experiences. We know the best places to see and events in any part of the world. Don't miss anything with our help!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features-->
+    <section class="position-relative bg-white rounded-xxl-4 mb-5 pb-1 py-md-3 zindex-5" style="margin-top: -30px;">
+        <div class="container pt-5 mb-4 mb-md-5">
+            <h2 class="text-center">The values we live by</h2>
+            <p class="mb-4 pb-2 mx-auto fs-lg text-center" style="max-width: 616px;">Travelers across the globe use our platform to discover where to stay, what to do and where to eat in any part of the world.</p>
+            <!-- Features grid-->
+            <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 g-4 justify-content-center">
+                <!-- Feature item-->
+                <div class="col">
+                    <div class="card border-0 shadow-sm card-hover h-100">
+                        <div class="card-body icon-box">
+                            <div class="icon-box-media bg-faded-accent text-accent rounded-circle mb-3"><i class="fi-bed"></i></div>
+                            <h3 class="h5 card-title">Safety is our priority</h3>
+                            <p class="card-text fs-sm">The condition of being protected from or unlikely to cause danger, risk, or injury.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature item-->
+                <div class="col">
+                    <div class="card border-0 shadow-sm card-hover h-100">
+                        <div class="card-body icon-box">
+                            <div class="icon-box-media bg-faded-warning text-warning rounded-circle mb-3"><i class="fi-cash"></i></div>
+                            <h3 class="h5 card-title">Fair price</h3>
+                            <p class="card-text fs-sm">We bargained a little to offer funny things at a fair price according to your needs.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature item-->
+                <div class="col">
+                    <div class="card border-0 shadow-sm card-hover h-100">
+                        <div class="card-body icon-box">
+                            <div class="icon-box-media bg-faded-primary text-primary rounded-circle mb-3"><i class="fi-heart"></i></div>
+                            <h3 class="h5 card-title">Empathy</h3>
+                            <p class="card-text fs-sm">we are able to understand and share the feelings of another. That's very important</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature item-->
+                <div class="col">
+                    <div class="card border-0 shadow-sm card-hover h-100">
+                        <div class="card-body icon-box">
+                            <div class="icon-box-media bg-faded-success text-success rounded-circle mb-3"><i class="fi-chat-left"></i></div>
+                            <h3 class="h5 card-title">Communication</h3>
+                            <p class="card-text fs-sm">Never missed any importing things to do due to our partnership with tripadvisor.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add business-->
+    <section class="container mb-5 pb-2 pb-lg-5">
+        <div class="row align-items-lg-center gy-4">
+            <div class="col-md-6"><img class="rounded-3" src="{{ asset('build/img/city-guide/about/01.jpg') }}" style="height: 500px" alt="Cover"></div>
+            <div class="col-lg-5 offset-lg-1 col-md-6">
+                <h2 class="mb-lg-4">Support our business by making a free donation!</h2>
+                <p class="mb-lg-4 fs-lg text-muted">What you donate will be use for adding more features to our website which are.</p>
+                <ul class="list-unstyled mb-4 pb-lg-3">
+                    <li class="d-flex"><i class="fi-check mt-1 me-2 pe-1 text-primary"></i>A blog: place that you can comment activities.</li>
+                    <li class="d-flex"><i class="fi-check mt-1 me-2 pe-1 text-primary"></i>Review page so that you can rate activities.</li>
+                    <li class="d-flex"><i class="fi-check mt-1 me-2 pe-1 text-primary"></i>Booking directly from our website.</li>
+                </ul>
+                <a class="btn btn-lg btn-primary rounded-pill" href="https://donate.stripe.com/test_14keW15h0c1U7JKaEE"><i class="fi-paypal me-2"></i>Donate</a>
+            </div>
+        </div>
+    </section>
+    <section class="container mb-5 pb-2 pb-lg-5">
+        <h2 class="mb-4 pb-2 text-center">World city guides</h2><img src="{{ asset('build/img/city-guide/about/map.jpg') }}" alt="World map">
+    </section>
+{% endblock %}

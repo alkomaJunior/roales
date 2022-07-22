@@ -1,0 +1,64 @@
+<!-- Footer-->
+<footer class="footer pt-lg-5 pt-4 bg-dark text-light">
+    <div class="container mb-4 py-4 pb-lg-5">
+        <div class="row gy-4">
+            <div class="col-lg-3 col-md-6 col-sm-4">
+                <div class="mb-4 pb-sm-3">
+                    <a class="d-inline-block" href="city-guide-home-v1.html">
+                        <img src="{{ asset('build/img/logo/logo-light.png') }}" width="116" alt="Logo">
+                    </a>
+                </div>
+                <ul class="nav nav-light flex-column">
+                    <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal text-light text-nowrap" href="mailto:example@gmail.com"><i class="fi-mail mt-n1 me-1 align-middle text-primary"></i>roalesroad@gmail.com</a></li>
+                    <li class="nav-item mb-2"><a class="nav-link p-0 fw-normal text-light text-nowrap" href="tel:4065550120"><i class="fi-device-mobile mt-n1 me-1 align-middle text-primary"></i>+33 07 01 20 47</a></li>
+                </ul>
+            </div>
+            <!-- Links-->
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <h3 class="fs-base text-light">Categories</h3>
+                <ul class="list-unstyled fs-sm">
+                    <li><a class="nav-link-light" href="{{ path('app_attraction_index') }}">Attractions</a></li>
+                    <li><a class="nav-link-light" href="{{ path('app_hotel_index') }}">Accommodation</a></li>
+                    <li><a class="nav-link-light" href="{{ path('app_restaurant_index') }}">restaurants</a></li>
+                    <li><a class="nav-link-light" target="_blank" href="https://www.tripadvisor.fr/Airlines">Flight</a></li>
+                </ul>
+            </div>
+            <!-- Links-->
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <h3 class="fs-base text-light">Quick links</h3>
+                <ul class="list-unstyled fs-sm">
+                    <li><a class="nav-link-light" href="{{ path('home_contact_us') }}">Contacts</a></li>
+                    <li><a class="nav-link-light" href="{{ path('home_about_us') }}">About</a></li>
+                    <li><a class="nav-link-light" href="{{ path('home') }}">Home</a></li>
+
+                </ul>
+            </div>
+            <!-- Subscription form-->
+            <div class="col-lg-4 offset-lg-1">
+                <h3 class="h4 text-light">ROALES ROAD TRIP</h3>
+                <p class="fs-sm mb-4 opacity-60">Don’t miss any relevant vacancies!</p>
+                <center>
+                    <a class="btn btn-primary btn-sm rounded-pill" type="button" href="{{ path('home_about_us') }}">About-us</a>
+                </center>
+            </div>
+        </div>
+    </div>
+    <div class="py-4 border-top border-light">
+        <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between py-2">
+            <!-- Copyright-->
+            <p class="order-lg-1 order-2 fs-sm mb-2 mb-lg-0"><span class="text-light opacity-60">&copy; All rights reserved. Made by </span><a class="nav-link-light fw-bold" href="https://createx.studio/" target="_blank" rel="noopener">ROALES</a></p>
+            <div class="d-flex flex-lg-row flex-column align-items-center order-lg-2 order-1 ms-lg-4 mb-lg-0 mb-4">
+                <!-- Links-->
+                <div class="d-flex align-items-center">
+                    <!-- Socials-->
+                    <div class="ms-4 ps-lg-2 text-nowrap">
+                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#"><i class="fi-facebook"></i></a>
+                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#"><i class="fi-twitter"></i></a>
+                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#"><i class="fi-telegram"></i></a>
+                        <a class="btn btn-icon btn-translucent-light btn-xs rounded-circle ms-2" href="#"><i class="fi-messenger"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ location.city | upper }} | ROALES{% endblock %}
+
+{% block body %}
+    <!-- Page content-->
+    <!-- Hero-->
+    <section class="jarallax bg-dark zindex-1 py-xxl-5" data-jarallax data-speed="0.5"><span class="img-overlay bg-transparent opacity-100" style="background-image: linear-gradient(0deg, rgba(31, 27, 45, .7), rgba(31, 27, 45, .7));"></span>
+        <div class="jarallax-img" style="background-image: url({{ asset('build/img/city-guide/home/hero-bg.jpg') }});"></div>
+        <div class="content-overlay container py-md-5">
+            <div class="mt-5 mb-md-5 py-5">
+                <div class="col-xl-6 col-lg-8 col-md-10 mx-auto mb-sm-5 mb-4 px-0 text-center">
+                    <h1 class="display-5 text-light mt-sm-5 my-4">Start exploring<span class="dropdown d-inline-block ms-2"><a class="dropdown-toggle text-decoration-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% if location.slug is same as 'nearby' %}{{ location.city }} you{% else %}{{ location.city }}{% endif %}</a></span>
+                    </h1>
+                    <p class="fs-lg text-white">Find great places to stay, eat, shop, or visit from our partners and local experts. Plan your trip with our partner TripAdvisor</p>
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute d-none d-xxl-block bottom-0 start-0 w-100 bg-white zindex-1" style="border-top-left-radius: 30px; border-top-right-radius: 30px; height: 30px;"></div>
+    </section>
+    <!-- Where to stay-->
+    <section class="container my-5 py-lg-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
+            <h2 class="h3 mb-sm-0">Where to stay</h2>
+        </div>
+        <!-- Carousel-->
+        <div class="row">
+            {% for hotel in hotels %}
+                <!-- Item-->
+                <div class="col-4">
+                    <div class="position-relative">
+                        <div class="position-relative mb-3">
+                            <img class="rounded-3" src="{{ hotel.photoOriginalUrl }}" alt="Article img">
+                        </div>
+                        <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link" href="{{ path('app_hotel_details', {'slug': hotel.slug}) }}">{{ hotel.name }}</a></h3>
+                        <ul class="list-inline mb-0 fs-xs">
+                            <li class="list-inline-item pe-1"><i class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b>{{ hotel.rating }}</b><span class="text-muted">&nbsp;({{ hotel.numReviews }})</span></li>
+                            <li class="list-inline-item pe-1"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>{{ hotel.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Banner + Where to eat-->
+    <section class="container my-5 py-lg-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
+            <h2 class="h3 mb-sm-0">Where to eat</h2>
+        </div>
+        <!-- Carousel-->
+        <div class="row">
+            {% for restaurant in restaurants %}
+                <!-- Item-->
+                <div class="col-4">
+                    <div class="position-relative">
+                        <div class="position-relative mb-3">
+                            <img class="rounded-3" src="{% if restaurant.photoOriginalUrl != "" %}{{ restaurant.photoOriginalUrl }}{% else %}{{ asset('build/img/city-guide/brands/06.svg') }}{% endif %}" alt="Article img">
+                        </div>
+                        <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link" href="{{ path('app_restaurant_details', {'slug': restaurant.slug}) }}">{{ restaurant.name }}</a></h3>
+                        <ul class="list-inline mb-0 fs-xs">
+                            <li class="list-inline-item pe-1"><i class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b>{{ restaurant.rating }}</b><span class="text-muted">&nbsp;({{ restaurant.numReviews }})</span></li>
+                            <li class="list-inline-item pe-1"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>{{ restaurant.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- Blog: Latest posts-->
+    <section class="container my-5 py-lg-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
+            <h2 class="h3 mb-sm-0">Here is some attractions</h2>
+        </div>
+        <!-- Carousel-->
+        <div class="row">
+            {% for attraction in attractions %}
+                <!-- Item-->
+                <div class="col-4">
+                    <div class="position-relative">
+                        <div class="position-relative mb-3">
+                            <img class="rounded-3" src="{{ attraction.photoOriginalUrl }}" alt="Article img">
+                        </div>
+                        <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link" href="{{ path('app_attraction_details', {'slug': attraction.slug}) }}">{{ attraction.name }}</a></h3>
+                        <ul class="list-inline mb-0 fs-xs">
+                            <li class="list-inline-item pe-1"><i class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b>{{ attraction.rating }}</b><span class="text-muted">&nbsp;({{ attraction.numReviews }})</span></li>
+                            <li class="list-inline-item pe-1"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>{{ attraction.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

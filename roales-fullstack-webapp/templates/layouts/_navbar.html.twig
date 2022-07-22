@@ -1,0 +1,43 @@
+<!-- Navbar-->
+<header class="navbar navbar-expand-lg navbar-light fixed-top bg-light" data-scroll-header>
+    <div class="container">
+        <a class="navbar-brand me-3 me-xl-4" href="{{ path('home') }}">
+            <img class="d-block" src="{{ asset('build/img/logo/logo-dark.png') }}" width="116" alt="Finder">
+        </a>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        {% if app.user is not null and app.user.isVerified == true %}
+            <div class="dropdown d-none d-lg-block order-lg-3 my-n2 me-3">
+                <a class="d-block py-2" href="#">
+                    <img class="rounded-circle" src="{{ asset('build/img/avatars/26.png') }}" width="40" alt="Annette Black">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <div class="d-flex align-items-start border-bottom px-3 py-1 mb-2" style="width: 16rem;">
+                        <img class="rounded-circle" src="{{ asset('build/img/avatars/26.png') }}" width="48" alt="avatar">
+                        <div class="ps-2">
+                            <h6 class="fs-base mb-0">{{ app.user.fullName }}</h6><span class="star-rating star-rating-sm"><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i></span>
+                            <div class="fs-xs py-2">{{ app.user.phoneNumber }}<br>{{ app.user.email }}</div>
+                        </div>
+                    </div>
+                    <a class="dropdown-item" href="{{ path('app_user_edit') }}">
+                        <i class="fi-user opacity-60 me-2"></i>Personal Info
+                    </a>
+                    <a class="dropdown-item" href="{{ path('app_user_favorite') }}">
+                        <i class="fi-heart opacity-60 me-2"></i>Favorites
+                    </a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ path('app_logout') }}">Sign Out</a>
+                </div>
+            </div>
+        {% endif %}
+        <a class="btn btn-primary btn-sm rounded-pill ms-2 order-lg-3" {% if app.user and app.user.isVerified == true %}style="display: none"{% endif %} href="{{ path('app_login') }}"><i class="fi-user me-2"></i>Sign<span class='d-none d-sm-inline'> In</span></a>
+        <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+            <ul class="navbar-nav navbar-nav-scroll" style="max-height: 35rem;">
+                <!-- Menu items-->
+                <li class="nav-item active"><a class="nav-link" href="{{ path('home') }}" role="button" aria-expanded="false">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('home_about_us') }}" role="button" aria-expanded="false">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ path('home_contact_us') }}" role="button" aria-expanded="false">Contacts</a></li>
+            </ul>
+        </div>
+    </div>
+</header>

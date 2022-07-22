@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HOTELS | ROALES{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+
+    <!-- Page header-->
+    <section class="container pt-5 mt-5">
+        <!-- Breadcrumb-->
+        <nav class="mb-3 pt-md-3" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_hotel_index') }}">Find accommodation</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ hotel.name }}</li>
+            </ol>
+        </nav>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-sm-2">
+            <h1 class="h2 me-3 mb-sm-0">{{ hotel.name }}</h1>
+            <div class="text-nowrap">
+                <button class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle" type="button" data-bs-toggle="tooltip" title="Add to Wishlist"><i class="fi-heart"></i></button>
+                <div class="dropdown d-inline-block" data-bs-toggle="tooltip" title="Share">
+                    <button class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle ms-2" type="button" data-bs-toggle="dropdown"><i class="fi-share"></i></button>
+                    <div class="dropdown-menu dropdown-menu-end my-1">
+                        <button class="dropdown-item" type="button"><i class="fi-facebook fs-base opacity-75 me-2"></i>Facebook</button>
+                        <button class="dropdown-item" type="button"><i class="fi-twitter fs-base opacity-75 me-2"></i>Twitter</button>
+                        <button class="dropdown-item" type="button"><i class="fi-instagram fs-base opacity-75 me-2"></i>Instagram</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav pills-->
+        <ul class="nav nav-pills border-bottom pb-3 mb-4">
+            <li class="nav-item"><a class="nav-link d-flex align-items-center active" href="{{ path('app_hotel_details', {'slug': hotel.slug}) }}"><i class="fi-image me-2"></i>Gallery</a></li>
+            <li class="nav-item"><a onclick="window.open(this.href); return false;" class="nav-link d-flex align-items-center" href="{{ hotel.webReview }}"><i class="fi-edit me-2"></i>Reviews</a></li>
+        </ul>
+    </section>
+    <!-- Gallery-->
+    <section class="container overflow-auto mb-5" data-simplebar>
+        <div class="row g-2 g-md-3 gallery" data-thumbnails="true" style="min-width: 30rem;">
+            <div class="col-8">
+                <a class="gallery-item rounded rounded-md-3" href="#" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Kids bed&lt;/h6&gt;">
+                    <img src="{{ hotel.photoOriginalUrl }}" alt="Gallery thumbnail">
+                </a>
+            </div>
+            <div class="col-4">
+                <a class="gallery-item rounded rounded-md-3 mb-2 mb-md-3" href="#" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Working desk&lt;/h6&gt;">
+                    <img src="{{ hotel.photoOriginalUrl }}" alt="Gallery thumbnail">
+                </a>
+                <a class="gallery-item rounded rounded-md-3" href="#" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Working desk&lt;/h6&gt;">
+                    <img src="{{ hotel.photoOriginalUrl }}" alt="Gallery thumbnail">
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Page content-->
+    <section class="container pb-5 mb-md-4">
+        <div class="row">
+            <div class="col-md-7 mb-md-0 mb-3">
+                <div class="card py-2 px-sm-4 px-3 shadow-sm">
+                    <div class="card-body mx-n2">
+                        <!-- Place info-->
+                        <div class="d-flex align-items-start mb-3 pb-3 border-bottom"><img src="{{ hotel.photoSmallUrl }}" width="60" alt="Thumbnail">
+                            <div class="ps-2 ms-1">
+                                <h3 class="h5 mb-2"> {{ hotel.name }}</h3>
+                                <ul class="list-unstyled d-flex flex-wrap fs-sm">
+                                    <li class="me-2 mb-1 pe-1"><i class="fi-star-filled mt-n1 me-1 text-warning align-middle opacity-70"></i><b>{{ hotel.rating }} </b>({{ hotel.numReviews }})</li>
+                                    <li class="me-2 mb-1 pe-1"><i class="fi-map-pin mt-n1 me-1 align-middle opacity-70"></i>{{ hotel.address }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Place contacts-->
+                        <div class="mb-3 pb-3 border-bottom">
+                            <h4 class="h5 mb-2">Contacts:</h4>
+                            <ul class="nav row row-cols-sm-2 row-cols-1 gy-1">
+                                <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="#"><i class="fi-map-pin mt-1 me-2 align-middle opacity-70"></i>{{ hotel.address }}</a></li>
+                                <li class="col">
+                                    <a class="nav-link d-inline-block p-0 fw-normal d-inline-flex align-items-start" href="{{ hotel.phone }}"><i class="fi-phone mt-1 me-2 align-middle opacity-70"></i>{{ hotel.phone }}</a>,
+                                <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="#"><i class="fi-globe mt-1 me-2 align-middle opacity-60"></i>{{ hotel.website }}</a></li>
+                                <li class="col"><a class="nav-link p-0 fw-normal d-flex align-items-start" href="mailto:bb-hotel@example.com"><i class="fi-education mt-1 me-2 align-middle opacity-70"></i>{{ hotel.categoryKey }}</a></li>
+                            </ul>
+                        </div>
+                        <!-- Place pricing-->
+                        <div class="mb-3 pb-3 border-bottom">
+                            <div class="row row-cols-sm-2 row-cols-1">
+                                <div class="col mb-sm-0 mb-3">
+                                    <h4 class="h5 mb-0"><span class="fs-4">{% if hotel.price == "" %}€7 - €19{% else %}{{ hotel.price }}{% endif %}</span><span class="fs-base fw-normal text-body"></span></h4>
+                                </div>
+                                <div class="col"><a onclick="window.open(this.href); return false;" class="btn btn-primary btn-lg rounded-pill w-sm-auto w-100" href="{{ hotel.webUrl }}">More details<i class="fi-chevron-right fs-sm ms-2"></i></a></div>
+                            </div>
+                        </div>
+                        <!-- Follow-->
+                        <div class="d-flex align-items-center">
+                            <h4 class="h5 mb-0 me-3">Follow:</h4>
+                            <div class="text-nowrap"><a class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle me-2" href="#"><i class="fi-facebook"></i></a><a class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle me-2" href="#"><i class="fi-instagram"></i></a><a class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle" href="#"><i class="fi-twitter"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Location (Map)-->
+            <div class="col-md-5" id="map">
+                <div class="position-relative bg-size-cover bg-position-center bg-repeat-0 h-100 rounded-3" style="min-height: 250px;">
+                    <div class="d-flex h-100 flex-column align-items-center justify-content-center">
+                        <a class="btn btn-primary rounded-pill stretched-link" href="#" data-iframe="true" data-bs-toggle="lightbox"><i class="fi-route me-2"></i>Get directions</a>
+                    </div>
+                </div>
+            </div>
+
+            <script type="module">
+                let map = L.map('map').setView([{{ hotel.latitude }}, {{ hotel.longitude }}], 13);
+                L.marker([{{ hotel.latitude }}, {{ hotel.longitude }}]).addTo(map)
+                    .bindPopup('{{ hotel.address }}')
+                    .openPopup();
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap'
+                }).addTo(map);
+            </script>
+        </div>
+    </section>
+
+    <section class="container my-5 py-lg-4">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 pb-2">
+            <h2 class="h3 mb-sm-0">You may be also interested in</h2>
+        </div>
+        <!-- Carousel-->
+        <div class="row">
+            {% for htl in hotels %}
+                <!-- Item-->
+                <div class="col-4">
+                    <div class="position-relative">
+                        <div class="position-relative mb-3">
+                            <img class="rounded-3" src="{{ htl.photoOriginalUrl }}" alt="Article img">
+                        </div>
+                        <h3 class="mb-2 fs-lg"><a class="nav-link stretched-link" href="#">{{ htl.name }}</a></h3>
+                        <ul class="list-inline mb-0 fs-xs">
+                            <li class="list-inline-item pe-1"><i class="fi-star-filled mt-n1 me-1 fs-base text-warning align-middle"></i><b>{{ htl.rating }}</b><span class="text-muted">&nbsp;({{ htl.numReviews }})</span></li>
+                            <li class="list-inline-item pe-1"><i class="fi-credit-card mt-n1 me-1 fs-base text-muted align-middle"></i>€€</li>
+                            <li class="list-inline-item pe-1"><i class="fi-map-pin mt-n1 me-1 fs-base text-muted align-middle"></i>{{ htl.address }}</li>
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,23 @@
+{{ form_start(homeSearchLocationForm, {
+        'attr': {
+            'class': 'form-group d-block d-md-flex position-relative rounded-md-pill me-lg-n5',
+            'novalidate': 'novalidate'
+        }
+    })
+}}
+    <style>
+        .invalid-feedback {
+            padding-left: 2%;
+        }
+    </style>
+
+    <div class="input-group input-group-lg border-end-md">
+        <span class="input-group-text text-muted rounded-pill ps-3"><i class="fi-search"></i></span>
+        {{ form_widget(homeSearchLocationForm.city) }}
+    </div>
+    <hr class="d-md-none my-2">
+    {{ form_errors(homeSearchLocationForm.city) }}
+    <div class="d-sm-flex">
+        <button class="btn btn-primary btn-lg rounded-pill w-100 w-md-auto ms-sm-3" type="submit" formnovalidate>Search</button>
+    </div>
+{{ form_end(homeSearchLocationForm) }}

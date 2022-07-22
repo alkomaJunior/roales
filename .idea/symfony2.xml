@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Symfony2PluginSettings">
+    <option name="pathToTranslation" value="roales-fullstack-webapp/var/cache/dev/translations" />
+    <option name="directoryToWeb" value="roales-fullstack-webapp/public" />
+    <option name="directoryToApp" value="roales-fullstack-webapp/app" />
+    <option name="pluginEnabled" value="true" />
+    <option name="twigNamespaces">
+      <list>
+        <twig_namespace custom="true" namespaceType="ADD_PATH" path="roales-fullstack-webapp/templates" />
+      </list>
+    </option>
+  </component>
+</project>

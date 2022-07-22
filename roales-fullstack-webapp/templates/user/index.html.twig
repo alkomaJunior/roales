@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+    <!-- Page container-->
+    <div class="container mt-5 mb-md-4 py-5">
+        <!-- Breadcrumbs-->
+        <nav class="mb-4 pt-2 pt-lg-3" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="city-guide-home-v1.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="city-guide-account-info.html">Account</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Personal info</li>
+            </ol>
+        </nav>
+        <!-- Account header-->
+        <div class="d-flex align-items-center justify-content-between pb-4 mb-2">
+            <div class="d-flex align-items-center">
+                <div class="position-relative flex-shrink-0"><img class="rounded-circle border border-white" src="{{ asset('build/img/avatars/26.png') }}" width="100" alt="avatar">
+                    <button class="btn btn-icon btn-light btn-xs rounded-circle shadow-sm position-absolute end-0 bottom-0" type="button" data-bs-toggle="tooltip" title="Change image"><i class="fi-pencil fs-xs"></i></button>
+                </div>
+                <div class="ps-3 ps-sm-4">
+                    <h3 class="h4 mb-2">{{ app.user.fullName }}</h3><span class="star-rating"><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i></span>
+                </div>
+            </div><a class="nav-link p-0 d-none d-md-block" href="{{ path('app_logout') }}"><i class="fi-logout mt-n1 me-2"></i>Sign out</a>
+        </div>
+        <!-- Page content-->
+        <div class="card card-body p-4 p-md-5 shadow-sm">
+            {{ include('registration/_register-form.html.twig', {'Action': 'Save changes', 'pwdTitle': 'Please for security confirm your password'}) }}
+        </div>
+    </div>
+{% endblock %}

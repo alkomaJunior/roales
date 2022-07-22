@@ -1,0 +1,30 @@
+
+###> symfony/framework-bundle ###
+/roales-fullstack-webapp/.env.local
+/roales-fullstack-webapp/.env.local.php
+/roales-fullstack-webapp/.env.*.local
+/roales-fullstack-webapp/config/secrets/prod/prod.decrypt.private.php
+/roales-fullstack-webapp/public/bundles/
+/roales-fullstack-webapp/var/
+/roales-fullstack-webapp/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/roales-fullstack-webapp/phpunit.xml
+roales-fullstack-webapp/.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/webpack-encore-bundle ###
+/roales-fullstack-webapp/node_modules/
+/roales-fullstack-webapp/public/build/
+roales-fullstack-webapp/npm-debug.log
+roales-fullstack-webapp/yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+###> symfony/assets-folder ###
+/roales-fullstack-webapp/assets/
+###< symfony/assets-folder ###
+###> squizlabs/php_codesniffer ###
+/roales-fullstack-webapp/.phpcs-cache
+/roales-fullstack-webapp/phpcs.xml
+###< squizlabs/php_codesniffer ###

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CONTACTS | ROALES{% endblock %}
+
+{% block body %}
+    <!-- Page content-->
+    <section class="container my-5 pt-lg-5 pt-4 pb-lg-5">
+        <!-- Breadcrumbs-->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb pt-3 mb-4">
+                <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contact us</li>
+            </ol>
+        </nav>
+        <div class="row gy-4">
+            <div class="col-md-6"><img class="rounded-3" style="height: 620px" src="{{ asset('build/img/city-guide/contacts/01.jpg') }}" alt="Cover"></div>
+            <div class="col-xl-5 offset-xl-1 col-md-6">
+                <h1 class="mb-md-4 mb-3">Contact us</h1>
+                <p class="mb-4 pb-md-2 fs-lg">Fill out the form and out team will try to get back to you within 24 hours.</p>
+                <!-- Contact form-->
+                {{ form_start(contactForm, {'attr': {'class': 'needs-validation row row-cols-sm-2 row-cols-1 gy-sm-4 gy-3', 'novalidate': 'true'}}) }}
+                    <div class="col">
+                        {{ form_label(contactForm.fullName, 'Full Name') }}
+                        {{ form_widget(contactForm.fullName) }}
+                        <div class="invalid-tooltip mt-1">Please, enter your name</div>
+                    </div>
+                    <div class="col">
+                        {{ form_label(contactForm.email, 'Email') }}
+                        {{ form_widget(contactForm.email) }}
+                        <div class="invalid-tooltip mt-1">Please, enter your email</div>
+                    </div>
+                    <div class="col">
+                        {{ form_label(contactForm.phone, 'Phone') }}
+                        {{ form_widget(contactForm.phone) }}
+                        <div class="invalid-tooltip mt-1">Please, enter your phone</div>
+                    </div>
+                    <div class="col">
+                        {{ form_label(contactForm.subject, 'Subject') }}
+                        {{ form_widget(contactForm.subject) }}
+                        <div class="invalid-tooltip mt-1">Please, enter your subject</div>
+                    </div>
+                    <div class="col-12 w-100">
+                        {{ form_label(contactForm.description, 'Message') }}
+                        {{ form_widget(contactForm.description) }}
+                        <div class="invalid-tooltip mt-1">Please, leave your message</div>
+                    </div>
+                    <div class="col-12 w-100">
+                        <button class="btn btn-lg btn-primary w-sm-auto w-100 mt-2" type="submit">Submit form</button>
+                    </div>
+                {{ form_end(contactForm) }}
+            </div>
+        </div>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    let forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    let validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+    </section>
+    <!-- Contact cards-->
+    <section class="container pb-5 mb-lg-5">
+        <div class="row g-4">
+            <div class="col-md-4"><a class="icon-box card card-body border-0 shadow-sm card-hover h-100 text-center" href="mailto:example@email.com">
+                    <div class="icon-box-media bg-faded-accent text-accent rounded-circle mx-auto mb-3"><i class="fi-mail"></i></div><span class="d-block mb-1 text-body">Drop us a line</span>
+                    <h3 class="h4 icon-box-title mb-0 opacity-90">example@email.com</h3></a></div>
+            <div class="col-md-4"><a class="icon-box card card-body border-0 shadow-sm card-hover h-100 text-center" href="tel:4065550120">
+                    <div class="icon-box-media bg-faded-success text-success rounded-circle mx-auto mb-3"><i class="fi-device-mobile"></i></div><span class="d-block mb-1 text-body">Call us any time</span>
+                    <h3 class="h4 icon-box-title mb-0 opacity-90">(406) 555-0120</h3></a></div>
+            <div class="col-md-4"><a class="icon-box card card-body border-0 shadow-sm card-hover h-100 text-center" href="#">
+                    <div class="icon-box-media bg-faded-warning text-warning rounded-circle mx-auto mb-3"><i class="fi-instagram"></i></div><span class="d-block mb-1 text-body">Follow us</span>
+                    <h3 class="h4 icon-box-title mb-0 opacity-90">@finder_directory</h3></a></div>
+        </div>
+    </section>
+    <!-- Map location-->
+    <section class="container pb-5 mb-2 mb-lg-5">
+        <div class="interactive-map rounded-3" data-map-options="{&quot;mapLayer&quot;: &quot;https://api.maptiler.com/maps/pastel/{z}/{x}/{y}.png?key=5vRQzd34MMsINEyeKPIs&quot;, &quot;coordinates&quot;: [51.5074, -0.1278], &quot;zoom&quot;: 10, &quot;markers&quot;: [{&quot;coordinates&quot;: [51.5074, -0.1278], &quot;popup&quot;: &quot;&lt;div class='p-3'&gt;&lt;h6&gt;Hi, I'm in London&lt;/h6&gt;&lt;p class='fs-sm pt-1 mt-n3 mb-0'&gt;Lorem ipsum dolor sit amet elit.&lt;/p&gt;&lt;/div&gt;&quot;}]}" style="height: 500px;"></div>
+    </section>
+{% endblock %}

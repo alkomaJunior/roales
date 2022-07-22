@@ -1,0 +1,22 @@
+namespace: App\Tests
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+params:
+    - .env.test.local
+settings:
+    colors: true
+    editor_url: 'phpstorm://open?file=%%file%%&line=%%line%%'
+coverage:
+    enabled: true
+    include:
+        - src/*
+    exclude:
+        - src/kernel.php

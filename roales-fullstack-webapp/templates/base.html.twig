@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}ROALES ROAD TRIP{% endblock %}</title>
+        <!-- SEO Meta Tags-->
+        <meta name="description" content="ROMALES ROAD TRIP is a multiplatform web app that provides consumer reviews and advice on hotels, restaurants, cities, regions, entertainment venues, etc., worldwide.">
+        <meta name="keywords" content="restaurant, city, region, entertainment, hotels, venues, road, trip, map, bar, travel, vacation, plane, booking">
+        <meta name="author" content="Powered by Roberte NGUEMO, Aghiles AZZOUG and Mawuse ALOGNIKOU.">
+        <!-- Viewport-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Favicon and Touch Icons-->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+        <link rel="mask-icon" color="#5bbad5" href="#">
+        <meta name="theme-color" content="#ffffff">
+
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('theme') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('theme') }}
+        {% endblock %}
+    </head>
+    <body>
+        {# {{ include('layouts/_page-loading.html.twig') }} #}
+        {{ include('layouts/_flashMessage.html.twig') }}
+        <main class="page-wrapper">
+            {{ include('layouts/_navbar.html.twig') }}
+            {% block body %}
+            {% endblock %}
+        </main>
+        {{ include('layouts/_footer.html.twig') }}
+    </body>
+</html>
