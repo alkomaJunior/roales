@@ -35,6 +35,7 @@ jobs:
       working-directory: ./roales-fullstack-webapp
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
     - name: Create Database
+      working-directory: ./roales-fullstack-webapp
       run: |
         mkdir -p data
         touch data/database.sqlite
