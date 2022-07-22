@@ -168,12 +168,6 @@
       <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/doctrine/migrations" />
       <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/doctrine/common" />
-      <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/symfony/mercure-bundle" />
-      <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/symfony/ux-turbo-mercure" />
-      <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/symfony/mercure" />
-      <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/lcobucci/jwt" />
-      <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/lcobucci/clock" />
-      <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/stella-maris/clock" />
       <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/symfonycasts/verify-email-bundle" />
       <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/league/oauth2-client" />
       <path value="$PROJECT_DIR$/roales-fullstack-webapp/vendor/knpuniversity/oauth2-client-bundle" />

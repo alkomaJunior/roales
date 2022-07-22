@@ -10,61 +10,57 @@ class LocationTest extends \Codeception\Test\Unit
     /**
      * @var \App\Tests\UnitTester
      */
-    protected $tester;
+    protected UnitTester $tester;
+    private Location $validLocation;
+    private Location $invalidLocation;
 
-    private Generator $faker;
-
-    private Location $valid_location;
-    private Location $invalid_location;
-    
     protected function _before()
     {
-        $this->faker = Factory::create();
+        $faker = Factory::create();
 
-        $this->valid_location = new Location();
-        $this->invalid_location = new Location();
+        $this->validLocation = new Location();
+        $this->invalidLocation = new Location();
 
-        $this->valid_location
-            ->setCity($this->faker->city)
-            ->setCityAscii($this->faker->randomAscii)
-            ->setLat($this->faker->latitude)
-            ->setLng($this->faker->longitude)
-            ->setCountry($this->faker->country)
-            ->setIso2($this->faker->citySuffix)
-            ->setIso3($this->faker->countryISOAlpha3)
-            ->setAdminName($this->faker->city)
-            ->setCapital($this->faker->countryCode)
-            ->setPopulation($this->faker->randomDigitNotZero());
+        $this->validLocation
+            ->setCity($faker->city)
+            ->setCityAscii($faker->randomAscii)
+            ->setLat($faker->latitude)
+            ->setLng($faker->longitude)
+            ->setCountry($faker->country)
+            ->setIsoTwo($faker->citySuffix)
+            ->setIsoThree($faker->countryISOAlpha3)
+            ->setAdminName($faker->city)
+            ->setCapital($faker->countryCode)
+            ->setPopulation($faker->randomDigitNotZero());
 
-        $this->invalid_location
+        $this->invalidLocation
             ->setCity("")
             ->setCityAscii("")
             ->setLat(0)
             ->setLng(0)
             ->setCountry("")
-            ->setIso2($this->faker->citySuffix)
-            ->setIso3($this->faker->countryISOAlpha3)
-            ->setAdminName($this->faker->city)
-            ->setCapital($this->faker->countryCode)
-            ->setPopulation($this->faker->randomDigitNotZero());
+            ->setIsoTwo($faker->citySuffix)
+            ->setIsoThree($faker->countryISOAlpha3)
+            ->setAdminName($faker->city)
+            ->setCapital($faker->countryCode)
+            ->setPopulation($faker->randomDigitNotZero());
     }
 
-    protected function _after()
-    {}
-
-    // tests
-    public function testInvalidValidLocation()
+    /**
+     * @return void
+     */
+    public function testInvalidValidLocation(): void
     {
-        $this->assertIsString($this->valid_location->getCity());
-        $this->assertNotEmpty($this->valid_location->getCityAscii());
-        $this->assertIsFloat($this->valid_location->getLat());
-        $this->assertEmpty($this->invalid_location->getLng());
-        $this->assertIsString($this->invalid_location->getCountry());
-        $this->assertIsNotFloat($this->invalid_location->getIso2());
-        $this->assertIsNotFloat($this->invalid_location->getIso3());
-        $this->assertIsNotInt($this->valid_location->getAdminName());
-        $this->assertIsNotInt($this->valid_location->getCapital());
-        $this->assertIsInt($this->valid_location->getPopulation());
-        $this->assertNull($this->valid_location->getId());
+        $this->assertIsString($this->validLocation->getCity());
+        $this->assertNotEmpty($this->validLocation->getCityAscii());
+        $this->assertIsFloat($this->validLocation->getLat());
+        $this->assertEmpty($this->invalidLocation->getLng());
+        $this->assertIsString($this->invalidLocation->getCountry());
+        $this->assertIsNotFloat($this->invalidLocation->getIsoTwo());
+        $this->assertIsNotFloat($this->invalidLocation->getIsoThree());
+        $this->assertIsNotInt($this->validLocation->getAdminName());
+        $this->assertIsNotInt($this->validLocation->getCapital());
+        $this->assertIsInt($this->validLocation->getPopulation());
+        $this->assertNull($this->validLocation->getId());
     }
 }

@@ -168,12 +168,6 @@
       <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/doctrine/migrations" />
       <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/doctrine/common" />
       <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/tests/_output/coverage" />
-      <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/symfony/mercure-bundle" />
-      <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/symfony/ux-turbo-mercure" />
-      <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/symfony/mercure" />
-      <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/lcobucci/jwt" />
-      <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/lcobucci/clock" />
-      <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/stella-maris/clock" />
       <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/symfonycasts/verify-email-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/league/oauth2-client" />
       <excludeFolder url="file://$MODULE_DIR$/roales-fullstack-webapp/vendor/knpuniversity/oauth2-client-bundle" />
