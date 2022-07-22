@@ -5,7 +5,7 @@
  *
  * This file is part of ROALES.
  *
- * ROALES is free road map trip web app: you can redistribute it and/or modify
+ * ROALES is free road map trip web app: you can redistribute it and/or edit
  * it under the terms of the MIT License.
  *
  * @copyright   Copyright ROALES
